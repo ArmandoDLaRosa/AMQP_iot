@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+    <title>Datos de Sensores IoT</title>
+</head>
+<body>
+    <h1>Datos de Sensores en Tiempo Real</h1>
+    <ul id="sensor-data">
+    </ul>
+
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+        socket.on('new_sensor_data', function(data) {
+            var list = document.getElementById('sensor-data');
+            var item = document.createElement('li');
+            item.textContent = JSON.stringify(data);
+            list.insertBefore(item, list.firstChild);
+        });
+    </script>
+</body>
+</html>
