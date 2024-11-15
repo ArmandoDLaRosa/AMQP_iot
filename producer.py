@@ -30,7 +30,7 @@ def send_sensor_data():
             exchange_name = 'sensor_data_exchange'
             channel.exchange_declare(exchange=exchange_name, exchange_type='fanout')
             channel.basic_publish(exchange=exchange_name, routing_key='', body=message)
-            print(f" [x] Sent {message}")
+            print(f" Sent {message}")
             connection.close()
         except Exception as e:
             print(f"Error sending message: {e}")

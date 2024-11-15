@@ -29,7 +29,7 @@ def consume():
 
     def callback(ch, method, properties, body):
         message = body.decode()
-        print(f" [x] Received {message}")
+        print(f" Received {message}")
         sensor_data = json.loads(message)
         socketio.emit('new_sensor_data', sensor_data)
 
